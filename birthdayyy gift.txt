@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Yasir 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #eef7ff, #cfe6ff);
+  overflow-x: hidden;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #4a76a8;
+}
+
+.gift-box {
+  width: 150px;
+  height: 120px;
+  background: #9ecbff;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+.lid {
+  width: 160px;
+  height: 30px;
+  background: #b6dcff;
+  position: absolute;
+  top: -30px;
+  left: -5px;
+  border-radius: 12px;
+  transition: transform 0.8s;
+}
+
+.ribbon-v {
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background: white;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon-h {
+  position: absolute;
+  height: 16px;
+  width: 100%;
+  background: white;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hidden { display: none; }
+
+/* Cake */
+.candles {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.candle {
+  width: 8px;
+  height: 30px;
+  background: #fff;
+  position: relative;
+}
+
+.candle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  animation: flicker 0.8s infinite;
+}
+
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.cake {
+  margin-top: 10px;
+}
+
+.cake-top {
+  width: 220px;
+  height: 30px;
+  background: #4e342e;
+  border-radius: 12px 12px 0 0;
+}
+
+.cake-base {
+  width: 220px;
+  height: 120px;
+  background: #6d4c41;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Balloons */
+.balloon {
+  position: fixed;
+  bottom: -80px;
+  width: 40px;
+  height: 55px;
+  background: #b3daff;
+  border-radius: 50%;
+  animation: float 9s infinite;
+}
+
+.balloon:nth-child(1) { left: 10%; }
+.balloon:nth-child(2) { left: 30%; animation-delay: 2s; }
+.balloon:nth-child(3) { left: 70%; animation-delay: 4s; }
+.balloon:nth-child(4) { left: 90%; animation-delay: 1s; }
+
+@keyframes float {
+  0% { bottom: -80px; }
+  100% { bottom: 110%; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #9ecbff;
+  animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+  from { top: -10px; }
+  to { top: 110%; }
+}
+
+/* Sparkles */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0% { opacity: 1; }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+.message {
+  font-size: 18px;
+  color: #3a5f8a;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="center" id="giftScreen">
+  <h2>🎁 Tap the Gift 🎁</h2>
+  <div class="gift-box" onclick="openGift()">
+    <div class="lid" id="lid"></div>
+    <div class="ribbon-v"></div>
+    <div class="ribbon-h"></div>
+  </div>
+</div>
+
+<div class="center hidden" id="cardScreen">
+  <h1>🎉 Happy 17th Birthday Yasir 🎉</h1>
+
+  <div class="candles">
+    <script>
+      for(let i=0;i<17;i++){
+        document.write('<div class="candle"></div>');
+      }
+    </script>
+  </div>
+
+  <div class="cake">
+    <div class="cake-top"></div>
+    <div class="cake-base"></div>
+  </div>
+
+  <p class="message">
+    happppyy birthdayyy yasirrruu 💙🎂<br><br>
+    i hopeee u have a wonderful dayy<br>
+    my pyaara chashmish 🤍<br><br>
+    i loveee u soo muchh &lt;333
+  </p>
+
+  <p class="message">
+    — to Yasir from Sarah<br>
+    with loads of love 💫
+  </p>
+</div>
+
+<audio id="song" autoplay>
+  <source src="https://www.soundjay.com/human/sounds/happy-birthday-song-01.mp3">
+</audio>
+
+<script>
+function openGift() {
+  document.getElementById("lid").style.transform = "rotate(-25deg) translateY(-20px)";
+  setTimeout(() => {
+    document.getElementById("giftScreen").classList.add("hidden");
+    document.getElementById("cardScreen").classList.remove("hidden");
+    document.getElementById("song").play();
+    confetti();
+    sparkles();
+  }, 800);
+}
+
+function confetti() {
+  for(let i=0;i<40;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    document.body.appendChild(c);
+  }
+}
+
+function sparkles() {
+  for(let i=0;i<20;i++){
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    document.body.appendChild(s);
+  }
+}
+</script>
+
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+</body>
+</html>
